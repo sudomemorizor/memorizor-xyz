@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorizor</title>
+    <link rel="icon" type="image/x-icon" href="images/tabicon.png">
+    <meta content="Memorizor" property="og:title" />
+    <meta content="Memorizor's Personal Website" property="og:description" />
+    <meta content="https://memorizor.xyz" property="og:url" />
+    <meta content="https://file.garden/YtLpdLutTE5LCcZv/moon.png" property="og:image" />
+    <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+
+      <header class="header">
+        <div class="logo-title">
+          <img src="images/moonlogo.svg" alt="Crescent moon logo" class="logo">
+          <h1>Memorizor</h1>
+        </div>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" aria-expanded="false">☰</button>
+        <nav class="nav" id="nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+        </nav>
+      </header>
+   <div class="page-content">
+    <div id="overlay"></div>
+    <div id="main">
+    </div>
+
+<div class="sticky-footer">
+      <div id="footer">
+        <p>MEMORIZOR 2025<br>enigmazero@tutanota.com</p>
+      </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  const overlay = document.getElementById('overlay');
+
+  function updateNavPosition() {
+    nav.style.top = '60px';
+    nav.style.height = `calc(100vh - 60px)`;
+  }
+
+  function toggleMenu() {
+    updateNavPosition();
+    nav.classList.toggle('open');
+    overlay.classList.toggle('active');
+
+    const isOpen = nav.classList.contains('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  }
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    overlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  window.addEventListener('resize', updateNavPosition);
+
+  if (hamburger && nav && overlay) {
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+  }
+});
+</script>
+
+  </body>
+</html>

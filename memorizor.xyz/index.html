@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorizor</title>
+    <link rel="icon" type="image/x-icon" href="images/tabicon.png">
+    <meta content="Memorizor" property="og:title" />
+    <meta content="Memorizor's Personal Website" property="og:description" />
+    <meta content="https://memorizor.xyz" property="og:url" />
+    <meta content="https://file.garden/YtLpdLutTE5LCcZv/moon.png" property="og:image" />
+    <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="logo-title">
+        <img src="./images/moonlogo.svg" alt="Logo" class="logo" />
+        <h1>Memorizor</h1>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="./projects/index.html">Projects</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="page-content">
+      <div id="overlay"></div>
+    <div id="main">
+      <section id="bio">
+        <h2>Welcome</h2>
+        <p>Hey, I’m Memo, or you can call me Zero, Null, etc. — I'm a coder, artist, musician and dabble in various other digital mediums.
+          <br><br>This is my personal website where I post updates on my projects, release software, and post my artwork.</p>
+      </section>
+
+      <div id="music-player">
+        <div id="track-info">Track Title</div>
+        <input type="range" id="seek-bar" value="0" min="0" max="100">
+        <div id="controls">
+          <button id="prev"><i class="fas fa-backward"></i></button>
+          <button id="play"><i class="fas fa-play"></i></button>
+          <button id="next"><i class="fas fa-forward"></i></button>
+          <button id="volume-button"><i class="fas fa-volume-up"></i></button>
+        </div>
+        <div id="volume-control">
+          <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+        </div>
+      </div>
+
+      <br>
+      <div class="greeble-line"></div>
+      <section id="blog">
+  <h2>Latest Posts</h2>
+  <div class="blog-posts-wrapper">
+  <div class="blog-posts">
+    <a href="/blog/pixel-art-guide.html" class="blog-post-link">
+      <article class="blog-post">
+        <h3>🎨 Memo's Guide to Pixel Art & Animation</h3>
+        <p class="date">May 27, 2025</p>
+        <p>I break down my process for animating characters, textures, and props in Aseprite...</p>
+      </article>
+    </a>
+    <a href="/blog/pixel-art-guide.html" class="blog-post-link">
+  <article class="blog-post">
+    <h3>🎶 Ableton is Pretty Cool</h3>
+    <p class="date">May 21, 2025</p>
+    <p>Neat Ableton tips and tricks, and how to come up with compositions...</p>
+  </article>
+   </a>
+  <a href="/blog/pixel-art-guide.html" class="blog-post-link">
+  <article class="blog-post">
+    <h3>💻 HTML & CSS Guide for Beginners</h3>
+    <p class="date">May 17, 2025</p>
+    <p>A beginner HTML & CSS guide, but through my own lens...</p>
+  </article>
+  </a>
+</div>
+<div class="gradient-fade"></div>
+</div>
+  <div class="blog-archive-button">
+  <a href="/blog/archive/" class="button">More Posts</a>
+  </div>
+</section>
+<br>
+<div class="greeble-line"></div>
+<section id="timeline">
+  <h2>Changelog</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">May 27, 2025</div>
+      <div class="timeline-content">
+        <h3>Launched Site</h3>
+        <p>Memorizor.xyz goes live, with a bunny and a proper responsive mobile layout!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+
+    <div class="sticky-footer">
+      <div class="bunny-track">
+        <div class="bunny-wrapper">
+          <img id="bunnyA" class="bunny active" />
+          <img id="bunnyB" class="bunny" />
+        </div>
+      </div>
+      <div id="footer">
+        <p>MEMORIZOR 2025<br>zero@memorizor.xyz</p>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      const overlay = document.getElementById('overlay');
+
+      function updateNavPosition() {
+        nav.style.top = '60px';
+        nav.style.height = `calc(100vh - 60px)`;
+      }
+
+      function toggleMenu() {
+        updateNavPosition();
+        nav.classList.toggle('open');
+        overlay.classList.toggle('active');
+
+        const isOpen = nav.classList.contains('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeMenu() {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      window.addEventListener('resize', updateNavPosition);
+
+      if (hamburger && nav && overlay) {
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+      }
+    });
+    </script>
+
+    <script>
+    const playlist = [
+      { src: "music/song1.ogg", title: "MickRip - jumping in space" },
+      { src: "music/song2.flac", title: "Darius - Texture" },
+      { src: "music/song3.mp3", title: "Silent Partner - Diamond Knight" },
+      { src: "music/song4.mp3", title: "Drax - Triangulator Man" },
+    ];
+
+    let currentTrack = 0;
+    const audio = new Audio();
+    audio.src = playlist[currentTrack].src;
+
+    const playBtn = document.getElementById('play');
+    const playIcon = playBtn.querySelector('i');
+
+    const backBtn = document.getElementById('prev');
+    const forwardBtn = document.getElementById('next');
+
+    const seekBar = document.getElementById('seek-bar');
+    const trackInfo = document.getElementById('track-info');
+
+    const volumeButton = document.getElementById('volume-button');
+    const volumeControl = document.getElementById('volume-control');
+    const volumeBar = document.getElementById('volume-bar');
+
+    function loadTrack(index) {
+      audio.src = playlist[index].src;
+      trackInfo.textContent = playlist[index].title;
+      audio.load();
+
+      seekBar.value = 0;
+
+      playIcon.classList.remove('fa-pause');
+      playIcon.classList.add('fa-play');
+    }
+
+
+    audio.addEventListener('loadedmetadata', () => {
+      seekBar.max = 100;
+      seekBar.value = 0;
+    });
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playIcon.classList.remove('fa-play');
+        playIcon.classList.add('fa-pause');
+      } else {
+        audio.pause();
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+      }
+    }
+
+    function skip(direction) {
+      currentTrack = (currentTrack + direction + playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+      audio.play();
+      playIcon.classList.remove('fa-play');
+      playIcon.classList.add('fa-pause');
+    }
+
+    function updateSeekBar() {
+      if (!isNaN(audio.duration)) {
+        seekBar.value = (audio.currentTime / audio.duration) * 100;
+      }
+    }
+
+    function seekAudio() {
+      if (!isNaN(audio.duration)) {
+        audio.currentTime = (seekBar.value / 100) * audio.duration;
+      }
+    }
+
+    function toggleVolumeBar() {
+      volumeControl.classList.toggle('show');
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    backBtn.addEventListener('click', () => skip(-1));
+    forwardBtn.addEventListener('click', () => skip(1));
+
+    audio.addEventListener('timeupdate', updateSeekBar);
+    seekBar.addEventListener('input', seekAudio);
+
+    volumeBar.addEventListener('input', () => {
+      audio.volume = volumeBar.value;
+    });
+
+    volumeButton.addEventListener('click', toggleVolumeBar);
+
+    loadTrack(currentTrack);
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bunnyA = document.getElementById('bunnyA');
+      const bunnyB = document.getElementById('bunnyB');
+      const speed = 70;
+
+      const bunnyRunSrc = 'images/bnuyjump300x.gif';
+      const bunnyLookAroundSrc = 'images/bnuyblink.gif';
+
+      const delayBetweenRuns = 2000;
+      const pauseDuration = 3000;
+
+      const rareEventChance = 0.3;
+      const rareEventEveryNLoops = 3;
+      const cooldownLoops = 1;
+
+      let activeBunny = bunnyA;
+      let inactiveBunny = bunnyB;
+
+      let loopCount = 0;
+      let loopsSinceLastRareEvent = cooldownLoops;
+      let isPaused = false;
+      let distanceTraveled = 0;
+      let lastTimestamp = null;
+
+      function swapBunnies() {
+        activeBunny.classList.remove('active');
+        inactiveBunny.classList.add('active');
+        [activeBunny, inactiveBunny] = [inactiveBunny, activeBunny];
+      }
+
+      function resetGif(src, callback = null) {
+
+        inactiveBunny.style.transform = activeBunny.style.transform;
+
+        inactiveBunny.src = '';
+        void inactiveBunny.offsetHeight;
+        inactiveBunny.src = src;
+
+        inactiveBunny.onload = () => {
+          swapBunnies();
+          if (callback) callback();
+        };
+      }
+
+      function animateBunny(timestamp) {
+        if (isPaused) return;
+
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const elapsed = (timestamp - lastTimestamp) / 1000;
+        lastTimestamp = timestamp;
+
+        distanceTraveled += speed * elapsed;
+        activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+
+        const bunnyWidth = activeBunny.offsetWidth;
+        const bunnyRight = distanceTraveled + bunnyWidth;
+        const isFullyVisible = distanceTraveled >= 0 && bunnyRight <= window.innerWidth;
+
+        const isRareEventLoop = loopCount > 0 && loopCount % rareEventEveryNLoops === 0;
+        const isOffCooldown = loopsSinceLastRareEvent >= cooldownLoops;
+        const shouldTriggerRare = Math.random() < rareEventChance;
+
+        if (
+          isFullyVisible &&
+          isRareEventLoop &&
+          isOffCooldown &&
+          !activeBunny.eventTriggered &&
+          shouldTriggerRare
+        ) {
+          console.log("🎉 Rare event triggered");
+          isPaused = true;
+          activeBunny.eventTriggered = true;
+          loopsSinceLastRareEvent = 0;
+
+          resetGif(bunnyLookAroundSrc, () => {
+            setTimeout(() => {
+              resetGif(bunnyRunSrc, () => {
+                isPaused = false;
+                lastTimestamp = performance.now();
+                requestAnimationFrame(animateBunny);
+              });
+            }, pauseDuration);
+          });
+          return;
+        }
+
+        if (distanceTraveled > window.innerWidth + bunnyWidth) {
+          distanceTraveled = -bunnyWidth;
+          activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+          loopCount++;
+          loopsSinceLastRareEvent++;
+          activeBunny.eventTriggered = false;
+          lastTimestamp = null;
+
+          setTimeout(() => {
+            requestAnimationFrame(animateBunny);
+          }, delayBetweenRuns);
+        } else {
+          requestAnimationFrame(animateBunny);
+        }
+      }
+
+      function startBunnyAnimation() {
+        console.log('🐇 Starting bunny animation');
+        activeBunny.src = bunnyRunSrc;
+
+        activeBunny.onload = () => {
+          const bunnyWidth = activeBunny.offsetWidth;
+          distanceTraveled = -bunnyWidth;
+          activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+          requestAnimationFrame(animateBunny);
+        };
+      }
+
+      if (bunnyA && bunnyB) {
+        startBunnyAnimation();
+
+        window.addEventListener('resize', () => {
+          const bunnyWidth = activeBunny.offsetWidth;
+          distanceTraveled = -bunnyWidth;
+          lastTimestamp = null;
+        });
+      }
+    });
+    </script>
+
+  </body>
+</html>
