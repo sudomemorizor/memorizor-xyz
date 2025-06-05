@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorizor</title>
+    <link rel="icon" type="image/x-icon" href="../images/tabicon.png">
+    <meta content="Memorizor Contact" property="og:title" />
+    <meta content="Contact Memorizor" property="og:description" />
+    <meta content="https://memorizor.xyz" property="og:url" />
+    <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" type="text/css" href="../styles.css?d=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="logo-title">
+        <img src="../images/moonlogo.svg" alt="Logo" class="logo" />
+        <h1>Memorizor</h1>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects/index.html">Projects</a></li>
+          <li><a href="../shop/index.html">Shop</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="index.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="page-content">
+      <div id="overlay"></div>
+    <div id="main">
+
+      <div class="contact-section">
+        <h2>Contact Me!</h2>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:zero@memorizor.xyz">zero@memorizor.xyz</a>
+        </div>
+
+        <div class="social-buttons">
+          <a href="https://ko-fi.com/memorizor" class="social-btn" aria-label="Twitter">
+            <i class="fa-solid fa-mug-hot"></i>
+          </a>
+          <a href="https://memoryconflux.itch.io/" class="social-btn" aria-label="GitHub">
+            <i class="fab fa-itch-io"></i>
+          </a>
+          <a href="https://sevensquared.bandcamp.com/" class="social-btn" aria-label="YouTube">
+            <i class="fab fa-bandcamp"></i>
+          </a>
+          <a href="https://github.com/sudomemorizor" class="social-btn" aria-label="Instagram">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://memorizor.newgrounds.com/" class="social-btn" aria-label="Instagram">
+            <i class="fa-solid fa-star"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+
+    <div class="sticky-footer">
+      <div class="bunny-track">
+        <div class="bunny-wrapper">
+          <img id="bunnyA" class="bunny active" />
+          <img id="bunnyB" class="bunny" />
+        </div>
+      </div>
+      <div id="footer">
+        <p>MEMORIZOR 2025<br>zero@memorizor.xyz</p>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      const overlay = document.getElementById('overlay');
+
+      function updateNavPosition() {
+        nav.style.top = '60px';
+        nav.style.height = `calc(100vh - 60px)`;
+      }
+
+      function toggleMenu() {
+        updateNavPosition();
+        nav.classList.toggle('open');
+        overlay.classList.toggle('active');
+
+        const isOpen = nav.classList.contains('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeMenu() {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      window.addEventListener('resize', updateNavPosition);
+
+      if (hamburger && nav && overlay) {
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+      }
+    });
+    </script>
+
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bunnyA = document.getElementById('bunnyA');
+      const bunnyB = document.getElementById('bunnyB');
+      const speed = 70;
+
+      const bunnyRunSrc = '../images/bnuyjump300x.gif';
+      const bunnyLookAroundSrc = '../images/bnuyblink.gif';
+
+      const delayBetweenRuns = 2000;
+      const pauseDuration = 3000;
+
+      const rareEventChance = 0.3;
+      const rareEventEveryNLoops = 3;
+      const cooldownLoops = 1;
+
+      let activeBunny = bunnyA;
+      let inactiveBunny = bunnyB;
+
+      let loopCount = 0;
+      let loopsSinceLastRareEvent = cooldownLoops;
+      let isPaused = false;
+      let distanceTraveled = 0;
+      let lastTimestamp = null;
+
+      function swapBunnies() {
+        activeBunny.classList.remove('active');
+        inactiveBunny.classList.add('active');
+        [activeBunny, inactiveBunny] = [inactiveBunny, activeBunny];
+      }
+
+      function resetGif(src, callback = null) {
+
+        inactiveBunny.style.transform = activeBunny.style.transform;
+
+        inactiveBunny.src = '';
+        void inactiveBunny.offsetHeight;
+        inactiveBunny.src = src;
+
+        inactiveBunny.onload = () => {
+          swapBunnies();
+          if (callback) callback();
+        };
+      }
+
+      function animateBunny(timestamp) {
+        if (isPaused) return;
+
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const elapsed = (timestamp - lastTimestamp) / 1000;
+        lastTimestamp = timestamp;
+
+        distanceTraveled += speed * elapsed;
+        activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+
+        const bunnyWidth = activeBunny.offsetWidth;
+        const bunnyRight = distanceTraveled + bunnyWidth;
+        const isFullyVisible = distanceTraveled >= 0 && bunnyRight <= window.innerWidth;
+
+        const isRareEventLoop = loopCount > 0 && loopCount % rareEventEveryNLoops === 0;
+        const isOffCooldown = loopsSinceLastRareEvent >= cooldownLoops;
+        const shouldTriggerRare = Math.random() < rareEventChance;
+
+        if (
+          isFullyVisible &&
+          isRareEventLoop &&
+          isOffCooldown &&
+          !activeBunny.eventTriggered &&
+          shouldTriggerRare
+        ) {
+          console.log("🎉 Rare event triggered");
+          isPaused = true;
+          activeBunny.eventTriggered = true;
+          loopsSinceLastRareEvent = 0;
+
+          resetGif(bunnyLookAroundSrc, () => {
+            setTimeout(() => {
+              resetGif(bunnyRunSrc, () => {
+                isPaused = false;
+                lastTimestamp = performance.now();
+                requestAnimationFrame(animateBunny);
+              });
+            }, pauseDuration);
+          });
+          return;
+        }
+
+        if (distanceTraveled > window.innerWidth + bunnyWidth) {
+          distanceTraveled = -bunnyWidth;
+          activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+          loopCount++;
+          loopsSinceLastRareEvent++;
+          activeBunny.eventTriggered = false;
+          lastTimestamp = null;
+
+          setTimeout(() => {
+            requestAnimationFrame(animateBunny);
+          }, delayBetweenRuns);
+        } else {
+          requestAnimationFrame(animateBunny);
+        }
+      }
+
+      function startBunnyAnimation() {
+        console.log('🐇 Starting bunny animation');
+        activeBunny.src = bunnyRunSrc;
+
+        activeBunny.onload = () => {
+          const bunnyWidth = activeBunny.offsetWidth;
+          distanceTraveled = -bunnyWidth;
+          activeBunny.style.transform = `translateX(${distanceTraveled}px)`;
+          requestAnimationFrame(animateBunny);
+        };
+      }
+
+      if (bunnyA && bunnyB) {
+        startBunnyAnimation();
+
+        window.addEventListener('resize', () => {
+          const bunnyWidth = activeBunny.offsetWidth;
+          distanceTraveled = -bunnyWidth;
+          lastTimestamp = null;
+        });
+      }
+    });
+    </script>
+
+  </body>
+</html>
