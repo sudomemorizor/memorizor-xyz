@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Memorizor</title>
+    <link rel="icon" type="image/x-icon" href="../images/tabicon.png">
+    <meta content="Memorizor Shop" property="og:title" />
+    <meta content="Memorizor's Online Store" property="og:description" />
+    <meta content="https://memorizor.xyz" property="og:url" />
+    <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" type="text/css" href="../styles.css?d=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="logo-title">
+        <img src="../images/moonlogo.svg" alt="Logo" class="logo" />
+        <h1>Memorizor</h1>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects/index.html">Projects</a></li>
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="page-content">
+      <div id="overlay"></div>
+    <div id="main">
+
+      <section id="shop" class="page-section">
+
+        <div class="shop-banner-full">
+          <img src="../images/banner.png" alt="Shop Banner">
+        </div>
+
+        <div class="shop-header">
+          <h2 class="shop-title">Official Merch Store</h2>
+          <p class="shop-intro">Support me and grab some cool designs!
+            <br>All products are hand delivered, and can only be delivered on week days.</p>
+        </div>
+
+  <div class="shop-filters" role="radiogroup" aria-label="Filter items">
+    <button class="filter-button active" data-filter="all">All</button>
+    <button class="filter-button" data-filter="stickers">Stickers</button>
+  </div>
+
+  <div class="shop-grid">
+    <div class="shop-item" data-category="stickers">
+      <div class="image-wrapper">
+        <img src="../images/kit1.jpg" alt="Kit Sticker">
+        <div class="remaining">31 left</div>
+      </div>
+      <h3>Mr. Kit - 2.1"x2.9" Die-cut Glossy Sticker</h3>
+      <p class="price">$4.00 USD</p>
+      <a href="https://ko-fi.com/s/1f2b51a89a" class="shop-button" target="_blank" aria-disabled="true" tabindex="-1">Buy on Ko-fi</a>
+    </div>
+
+    <div class="shop-item" data-category="stickers">
+      <div class="image-wrapper">
+        <img src="../images/pory1.jpg" alt="Porygon Sticker">
+        <div class="remaining">44 left</div>
+      </div>
+      <h3>Porygon-Z - 1.9"x1.9" Die-cut Holographic Sticker</h3>
+      <p class="price">$3.00 USD</p>
+      <a href="https://ko-fi.com/s/70fa8c0765" class="shop-button" target="_blank">Buy on Ko-fi</a>
+    </div>
+  </div>
+
+</section>
+
+    </div>
+    </div>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-button');
+  const shopItems = document.querySelectorAll('.shop-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.dataset.filter;
+
+      shopItems.forEach(item => {
+        const category = item.dataset.category;
+        if (filter === 'all' || category === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+
+    <div class="sticky-footer">
+      <div id="footer">
+        <p>MEMORIZOR 2025<br>zero@memorizor.xyz</p>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      const overlay = document.getElementById('overlay');
+
+      function updateNavPosition() {
+        nav.style.top = '60px';
+        nav.style.height = `calc(100vh - 60px)`;
+      }
+
+      function toggleMenu() {
+        updateNavPosition();
+        nav.classList.toggle('open');
+        overlay.classList.toggle('active');
+
+        const isOpen = nav.classList.contains('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeMenu() {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      window.addEventListener('resize', updateNavPosition);
+
+      if (hamburger && nav && overlay) {
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+      }
+    });
+    </script>
+
+
+  </body>
+</html>

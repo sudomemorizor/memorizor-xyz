@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post – Memorizor</title>
+  <link rel="icon" type="image/x-icon" href="../images/tabicon.png">
+  <meta content="Memorizor Blog" property="og:title" />
+  <meta content="Memorizor's personal blog." property="og:description" />
+  <meta content="https://memorizor.xyz/projects/" property="og:url" />
+  <meta content="https://memorizor.xyz/images/moonlogo.svg" property="og:image" />
+  <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" type="text/css" href="../styles.css?d=<?php echo time(); ?>" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-title">
+      <img src="../images/moonlogo.svg" alt="Logo" class="logo" />
+      <h1>Memorizor</h1>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects/index.html">Projects</a></li>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="page-content">
+    <div id="overlay"></div>
+    <div id="main">
+
+    <article class="full-post">
+
+      <a href="index.html" class="back-link">← Back to Archive</a>
+
+      <h1>New Track out on Soundcloud and Bandcamp</h1>
+      <p class="post-date">Jun 5, 2025</p>
+      <div class="post-tags">
+        <span>#update</span>
+        <span>#music</span>
+      </div>
+      <p class="post-content">
+        Finished up an old track I was working on when i first dove into messing with mixing and effects in Ableton.
+        I wanted to do more with it but I was running out of ideas so i decided to release it instead of sitting on it and leaving it unreleased forever.
+        <br><br>I'm honestly glad I did because this allows me to move onto other things and actually put something out into the world instead of keeping everything on my hard drive never to be seen or heard because it isn't "good enough".
+        I do plan to improve upon my music and make it more interesting, I feel like my tracks have either been kind of short or felt a bit empty as of late, and I think that's just a result of me simply running out of ideas! I've been downloading a lot more music to listen to as of late and have been studying my favorite composers to get an idea of what a fully fleshed out track should sound like.
+        <br><br>Don't worry though, I'll keep doing what I want and expressing myself through my music. I don't really see a point in trying to fit into what is acceptable when music is like any art form and therefore subjective. I just like making simple tracks.<br><br>
+        Anyways, this track is meant to represent and sound like a destructive storm, or some sort of world-ending event. I think about large scale events like this often, not out of some sense of doom but just because i think witnessing such an event would be awe-inspiring.
+        There is still that sense of "doom" reflected in the chord progression, but at the same time it sounds ethereal and beautiful. That's what it feels like to me anyways. Feel free to come up with your own meaning.<br><br>
+        The track is free to download and use however you'd like, although credit would be appreciated.<br><br>
+        <h3>Bandcamp</h3>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=868472799/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://sevensquared.bandcamp.com/track/cataclysm">null by sevensquared</a></iframe>
+        <h3>Soundcloud</h3>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2106777393&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/sevensquared" title="7²" target="_blank" style="color: #cccccc; text-decoration: none;">7²</a> · <a href="https://soundcloud.com/sevensquared/cataclysm" title="Cataclysm" target="_blank" style="color: #cccccc; text-decoration: none;">Cataclysm</a></div>
+        <h3>Stems</h3>
+        <a class="button" href="https://drive.google.com/uc?export=download&id=1dPVBmxCunOD0vBTD7kUZ0PFzuLYVc85S" target="_blank">
+          <b>Direct Download</b>
+        </a>
+
+      </p>
+    </article>
+
+    </div>
+  </div>
+
+  <div class="sticky-footer">
+
+    <div id="footer">
+      <p>MEMORIZOR 2025<br>zero@memorizor.xyz</p>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('overlay');
+
+    function updateNavPosition() {
+      nav.style.top = '60px';
+      nav.style.height = `calc(100vh - 60px)`;
+    }
+
+    function toggleMenu() {
+      updateNavPosition();
+      nav.classList.toggle('open');
+      overlay.classList.toggle('active');
+
+      const isOpen = nav.classList.contains('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    }
+
+    function closeMenu() {
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    window.addEventListener('resize', updateNavPosition);
+
+    if (hamburger && nav && overlay) {
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', closeMenu);
+    }
+  });
+  </script>
+
+</body>
+</html>

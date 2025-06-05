@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects – Memorizor</title>
+  <title>About – Memorizor</title>
   <link rel="icon" type="image/x-icon" href="../images/tabicon.png">
-  <meta content="Memorizor Projects" property="og:title" />
-  <meta content="See Memorizor's development and creative projects." property="og:description" />
+  <meta content="About Memorizor" property="og:title" />
+  <meta content="Learn about Memorizor." property="og:description" />
   <meta content="https://memorizor.xyz/projects/" property="og:url" />
   <meta content="https://memorizor.xyz/images/moonlogo.svg" property="og:image" />
   <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
     <link rel="stylesheet" type="text/css" href="../styles.css?d=<?php echo time(); ?>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header class="header">
@@ -22,9 +23,9 @@
     <nav class="nav" id="nav" aria-label="Main navigation">
       <ul class="nav-list">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="index.html">Projects</a></li>
+        <li><a href="../projects/index.html">Projects</a></li>
         <li><a href="../shop/index.html">Shop</a></li>
-        <li><a href="../about/index.html">About</a></li>
+        <li><a href="index.html">About</a></li>
         <li><a href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
@@ -32,54 +33,90 @@
   <div class="page-content">
     <div id="overlay"></div>
     <div id="main">
-      <section id="projects">
-        <div id="projects-wrapper">
-        <h2>Projects</h2>
-        <p>Here are some of the things I’ve been working on, from software to art and music.</p>
 
-        <div class="project-grid">
-          <div class="project-wrapper">
-          <a href="https://memoryconflux.itch.io/gigaminer" class="project-card-link" target="_blank">
-          <div class="project-card">
-            <div class="card-content">
-              <h3>GigaMiner</h3>
-              <p>A 2d 8-bit arcade platformer. Your job is to dig up artifacts and precious stones, and make lots of profit at the end of your shift!</p>
+      <div id="bio">
+        <h2>About Me</h2>
+        <p>My name is Memorizor. I also go by "Zero" or "Null" among those i know personally.<br><br>
+        I am an ever-learning coder, artist, game dev, web dev, musician, among other things.
+        I created this website to showcase my projects and present myself more professionally, and to
+        learn more about web development.
+        <br><br>My resources are somewhat limited, so unfortunately this is all for now.
+        Some day I hope to create web apps and games, and make interactive user experiences. </p>
+        <div class="greeble-line"></div>
+        <h2>Art</h2>
+        <p>I've been drawing since I was really small. Drawing is probably the one skill I have practiced the longest.
+           I draw pretty much every day, but most of my work is kept private.
+           <br><br>I will occassionally post work I find presentable to the internet, which you can view on my many scattered social media accounts.
+         I plan to create a gallery page with a comment section for my website at some point so you don't have to go digging for it if you'd like to see it all in one place.</p>
+        <div class="greeble-line"></div>
+        <h2>Music</h2>
+        <p>Music is a more recent hobby of mine. I have always liked listening to music, but had always wished I could make it myself.
+        Well, I decided "better late than never" and got into music production more seriously.
+        Output is slow, as expected when you have a dozen different hobbies and only so much time to practice them.
+      <br><br>You can listen to my music on <a class="bio-link" href="https://soundcloud.com/sevensquared">Soundcloud</a> or <a class="bio-link" href="https://sevensquared.bandcamp.com/">Bandcamp</a></p>
+      </div>
+
+      <section id="qna">
+        <h2>Question & Answer</h2>
+
+        <div class="qa-item">
+            <button class="question-toggle" aria-expanded="false">
+              <i class="fas fa-chevron-right dropdown-arrow"></i>
+              <span class="question-text">What tools do you use for art?</span>
+            </button>
+          <div class="qa-answer">
+          <div class="qa-row">
+            <div class="avatar">
+              <img src="../images/avatar.png" data-static="../images/avatar.png" data-talking="../images/avatar.gif" alt="Avatar">
             </div>
-            <div class="card-image">
-              <img src="../images/kaivajump.gif" alt="A GIF of an 8-bit game with brick tiles and a jumping character.">
-            </div>
+          <div class="speech-bubble">
+            <span class="bubble-text">
+              I primarily use Krita and Aseprite. Krita has a lot of good tools and features other dedicated art software doesn't have, and it's free so it's a win-win for me.
+            </span>
           </div>
-          </a>
-        </div>
-          <div class="project-wrapper">
-          <a href="/project/placeholder.html" class="project-card-link" target="_blank">
-          <div class="project-card">
-            <div class="card-content">
-              <h3>Plumbum</h3>
-              <p>A simple little top-down throne-like wave shooter with randomized enemies and weapon drops.</p>
-            </div>
-            <div class="card-image">
-              <img src="../images/plumbum.png" alt="A mockup of a top-down shooter">
-            </div>
-          </div>
-          </a>
-        </div>
-          <div class="project-wrapper">
-          <a href="https://lpsonline.bandcamp.com/" class="project-card-link" target="_blank">
-          <div class="project-card">
-            <div class="card-content">
-              <h3>PIPE DREAM</h3>
-              <p>I made the character/label 5G! I make music under it.<br>PIPE DREAM SOUNDSYSTEMS was created by Rico.</p>
-            </div>
-            <div class="card-image">
-              <img src="../images/pipedream.jpg" alt="Project preview">
-            </div>
-          </div>
-          </a>
-        </div>
         </div>
       </div>
+    </div>
+
+        <div class="qa-item">
+          <button class="question-toggle" aria-expanded="false">
+            <i class="fas fa-chevron-right dropdown-arrow"></i>
+            <span class="question-text">What tools do you use to make music?</span>
+          </button>
+          <div class="qa-answer">
+          <div class="qa-row">
+            <div class="avatar">
+              <img src="../images/avatar.png" data-static="../images/avatar.png" data-talking="../images/avatar.gif" alt="Avatar">
+            </div>
+          <div class="speech-bubble">
+            <span class="bubble-text">
+              I use Ableton with some VSTs. I like using Serum and the default Wavetable plugin with some effects put on top of them.
+            </span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+        <div class="qa-item">
+          <button class="question-toggle" aria-expanded="false">
+            <i class="fas fa-chevron-right dropdown-arrow"></i>
+            <span class="question-text">What's that little yellow bunny-looking thing?</span>
+          </button>
+          <div class="qa-answer">
+          <div class="qa-row">
+            <div class="avatar">
+              <img src="../images/avatar.png" data-static="../images/avatar.png" data-talking="../images/avatar.gif" alt="Avatar">
+            </div>
+          <div class="speech-bubble">
+            <span class="bubble-text">
+              That's my mascot. Or fursona, whatever you want to call it. It is a visual representation of me in one way or another.
+            </span>
+          </div>
+        </div>
+      </div>
+      </div>
       </section>
+
     </div>
   </div>
 
@@ -127,6 +164,61 @@
       hamburger.addEventListener('click', toggleMenu);
       overlay.addEventListener('click', closeMenu);
     }
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.question-toggle');
+
+    toggles.forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const qaRow = answer.querySelector('.qa-row');
+        const speechBubble = qaRow.querySelector('.speech-bubble');
+        const textTarget = speechBubble.querySelector('.bubble-text');
+        const avatar = qaRow.querySelector('.avatar');
+        const avatarImg = avatar.querySelector('img');
+
+        const fullText = textTarget.dataset.fullText?.trim() || textTarget.textContent.trim();
+        const isOpen = answer.classList.contains('open');
+
+        if (isOpen) {
+          answer.classList.remove('open');
+          button.setAttribute('aria-expanded', 'false');
+          avatar.classList.remove('wobble');
+          avatarImg.src = avatarImg.dataset.static;
+          textTarget.classList.remove('typing');
+          textTarget.textContent = fullText;
+        } else {
+          answer.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+          textTarget.textContent = '';
+          textTarget.classList.add('typing');
+          avatar.classList.add('wobble');
+          avatarImg.src = avatarImg.dataset.talking;
+
+          textTarget.dataset.fullText = fullText;
+
+          let charIndex = 0;
+          const typingSpeed = 15;
+
+          function typeChar() {
+            if (charIndex <= fullText.length) {
+              textTarget.textContent = fullText.slice(0, charIndex);
+              charIndex++;
+              setTimeout(typeChar, typingSpeed);
+            } else {
+              textTarget.classList.remove('typing');
+              avatar.classList.remove('wobble');
+              avatarImg.src = avatarImg.dataset.static;
+            }
+          }
+
+          typeChar();
+        }
+      });
+    });
   });
   </script>
 

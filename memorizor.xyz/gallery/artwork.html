@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorizor</title>
+    <link rel="icon" type="image/x-icon" href="../images/tabicon.png">
+    <meta content="Memorizor Contact" property="og:title" />
+    <meta content="Contact Memorizor" property="og:description" />
+    <meta content="https://memorizor.xyz" property="og:url" />
+    <meta content="#FF5735" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" type="text/css" href="../styles.css?d=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="logo-title">
+        <img src="../images/moonlogo.svg" alt="Logo" class="logo" />
+        <h1>Memorizor</h1>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects/index.html">Projects</a></li>
+          <li><a href="../shop/index.html">Shop</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="index.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="page-content">
+      <div id="overlay"></div>
+    <div id="main">
+
+
+
+      <section id="comments">
+  <h2>Leave a Comment</h2>
+
+  <form class="comment-form" method="POST" action="./placeholder">
+    <input type="text" name="fields[name]" placeholder="Name" required>
+
+    <textarea name="fields[message]" placeholder="Leave a comment..." rows="5" required></textarea>
+
+    <input type="hidden" name="options[redirect]" value="./placeholder">
+    <input type="hidden" name="options[slug]" value="gallery">
+
+    <button type="submit">Post Comment</button>
+  </form>
+
+  <div class="comment-list">
+    <div class="comment">
+      <strong>Zero</strong>
+      <p>This piece is so cool!</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+    </div>
+
+
+    <div class="sticky-footer">
+      <div id="footer">
+        <p>MEMORIZOR 2025<br>zero@memorizor.xyz</p>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      const overlay = document.getElementById('overlay');
+
+      function updateNavPosition() {
+        nav.style.top = '60px';
+        nav.style.height = `calc(100vh - 60px)`;
+      }
+
+      function toggleMenu() {
+        updateNavPosition();
+        nav.classList.toggle('open');
+        overlay.classList.toggle('active');
+
+        const isOpen = nav.classList.contains('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeMenu() {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      window.addEventListener('resize', updateNavPosition);
+
+      if (hamburger && nav && overlay) {
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+      }
+    });
+    </script>
+
+  </body>
+</html>
